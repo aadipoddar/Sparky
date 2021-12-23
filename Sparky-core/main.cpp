@@ -15,16 +15,21 @@ int main()
 	while (!window.closed())
 	{
 		window.clear();
-#if 1
+
+		double x, y;
+		window.getMousePosition(x, y);
+		std::cout << x << "," << y << std::endl;
+
+	#if 1
 		glBegin(GL_QUADS);
 		glVertex2f(-0.5f, -0.5f);
 		glVertex2f(-0.5f, 0.5f);
 		glVertex2f(0.5f, 0.5f);
 		glVertex2f(0.5f, -0.5f);
 		glEnd();
-#else
+	#else
 		glDrawArrays(GL_ARRAY_BUFFER, 0, 6);
-#endif
+	#endif
 		window.update();
 	}
 
