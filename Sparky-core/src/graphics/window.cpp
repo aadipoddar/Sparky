@@ -1,10 +1,10 @@
 #include "window.h"
 
-
 namespace sparky
 {
 	namespace graphics
 	{
+
 		void window_resize(GLFWwindow* window, int width, int height);
 
 		Window::Window(const char* title, int width, int height)
@@ -12,7 +12,6 @@ namespace sparky
 			m_Title = title;
 			m_Width = width;
 			m_Height = height;
-
 			if (!init())
 				glfwTerminate();
 
@@ -55,19 +54,15 @@ namespace sparky
 		{
 			if (!glfwInit())
 			{
-				std::cout << "Failed to Initialize GLFW" << std::endl;
-
+				std::cout << "Failed to initialize GLFW!" << std::endl;
 				return false;
 			}
-
 			m_Window = glfwCreateWindow(m_Width, m_Height, m_Title, NULL, NULL);
-
 			if (!m_Window)
 			{
-				std::cout << "Failed to create GLFW Window!" << std::endl;
+				std::cout << "Failed to create GLFW window!" << std::endl;
 				return false;
 			}
-
 			glfwMakeContextCurrent(m_Window);
 			glfwSetWindowUserPointer(m_Window, this);
 			glfwSetWindowSizeCallback(m_Window, window_resize);
@@ -75,21 +70,19 @@ namespace sparky
 			glfwSetMouseButtonCallback(m_Window, mouse_button_callback);
 			glfwSetCursorPosCallback(m_Window, cursor_position_callback);
 
-
 			if (glewInit() != GLEW_OK)
 			{
-				std::cout << "Could not initialize GlEW!" << std::endl;
+				std::cout << "Could not initialize GLEW!" << std::endl;
 				return false;
 			}
 
 			std::cout << "OpenGL " << glGetString(GL_VERSION) << std::endl;
-
 			return true;
 		}
 
 		bool Window::isKeyPressed(unsigned int keycode) const
 		{
-			// TODO - Log This
+			// TODO: Log this!
 			if (keycode >= MAX_KEYS)
 				return false;
 
@@ -98,7 +91,7 @@ namespace sparky
 
 		bool Window::isMouseButtonPressed(unsigned int button) const
 		{
-			// TODO - Log This
+			// TODO: Log this!
 			if (button >= MAX_BUTTONS)
 				return false;
 
@@ -118,6 +111,10 @@ namespace sparky
 
 		void Window::update()
 		{
+			GLenum error = glGetError();
+			if (error != GL_NO_ERROR)
+				std::cout << "OpenGL Error: " << error << std::endl;
+
 			glfwPollEvents();
 			glfwSwapBuffers(m_Window);
 		}
