@@ -31,6 +31,7 @@
     <ClCompile Include="src\graphics\shader.cpp" />
     <ClCompile Include="src\graphics\sprite.cpp" />
     <ClCompile Include="src\graphics\static_sprite.cpp" />
+    <ClCompile Include="src\graphics\texture.cpp" />
     <ClCompile Include="src\maths\mat4.cpp" />
     <ClCompile Include="src\graphics\window.cpp" />
     <ClCompile Include="src\maths\vec2.cpp" />
@@ -51,6 +52,7 @@
     <ClInclude Include="src\graphics\simple2drenderer.h" />
     <ClInclude Include="src\graphics\sprite.h" />
     <ClInclude Include="src\graphics\static_sprite.h" />
+    <ClInclude Include="src\graphics\texture.h" />
     <ClInclude Include="src\maths\mat4.h" />
     <ClInclude Include="src\graphics\window.h" />
     <ClInclude Include="src\maths\maths.h" />
@@ -59,6 +61,7 @@
     <ClInclude Include="src\maths\vec3.h" />
     <ClInclude Include="src\maths\vec4.h" />
     <ClInclude Include="src\utils\fileUtils.h" />
+    <ClInclude Include="src\utils\ImageLoad.h" />
     <ClInclude Include="src\utils\timer.h" />
   </ItemGroup>
   <ItemGroup>
@@ -121,29 +124,29 @@
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>$(SolutionDir)Dependencies\FreeImage\include\x32;$(SolutionDir)Dependencies\GLEW\include;$(SolutionDir)Dependencies\GLFW\include;$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Dependencies\FreeImage\lib\x32;$(SolutionDir)Dependencies\GLEW\lib\Win32;$(SolutionDir)Dependencies\GLFW\lib-vc2022x86;$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86)</LibraryPath>
-    <OutDir>$(SolutionDir)bin\$(ProjectName)\$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)bin-int\$(ProjectName)\$(Configuration)\</IntDir>
+    <OutDir>$(SolutionDir)bin\$(ProjectName)\$(Configuration)\$(Platform)</OutDir>
+    <IntDir>$(SolutionDir)bin-int\$(ProjectName)\$(Configuration)\$(Platform)</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <IncludePath>$(SolutionDir)Dependencies\FreeImage\include\x32;$(SolutionDir)Dependencies\GLEW\include;$(SolutionDir)Dependencies\GLFW\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Dependencies\FreeImage\lib\x32;$(SolutionDir)Dependencies\GLEW\lib\Win32;$(SolutionDir)Dependencies\GLFW\lib-vc2022x86;$(LibraryPath)</LibraryPath>
-    <OutDir>$(SolutionDir)bin\$(ProjectName)\$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)bin-int\$(ProjectName)\$(Configuration)\</IntDir>
+    <OutDir>$(SolutionDir)bin\$(ProjectName)\$(Configuration)\$(Platform)</OutDir>
+    <IntDir>$(SolutionDir)bin-int\$(ProjectName)\$(Configuration)\$(Platform)</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>$(SolutionDir)Dependencies\FreeImage\include\x64;$(SolutionDir)Dependencies\GLEW\include;$(SolutionDir)Dependencies\GLFW\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Dependencies\FreeImage\lib\x64;$(SolutionDir)Dependencies\GLEW\lib\x64;$(SolutionDir)Dependencies\GLFW\lib-vc2022x64;$(LibraryPath)</LibraryPath>
-    <OutDir>$(SolutionDir)bin\$(ProjectName)\$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)bin-int\$(ProjectName)\$(Configuration)\</IntDir>
+    <OutDir>$(SolutionDir)bin\$(ProjectName)\$(Configuration)\$(Platform)</OutDir>
+    <IntDir>$(SolutionDir)bin-int\$(ProjectName)\$(Configuration)\$(Platform)</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <IncludePath>$(SolutionDir)Dependencies\FreeImage\include\x64;$(SolutionDir)Dependencies\GLEW\include;$(SolutionDir)Dependencies\GLFW\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Dependencies\FreeImage\lib\x64;$(SolutionDir)Dependencies\GLEW\lib\x64;$(SolutionDir)Dependencies\GLFW\lib-vc2022x64;$(LibraryPath)</LibraryPath>
-    <OutDir>$(SolutionDir)bin\$(ProjectName)\$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)bin-int\$(ProjectName)\$(Configuration)\</IntDir>
+    <OutDir>$(SolutionDir)bin\$(ProjectName)\$(Configuration)\$(Platform)</OutDir>
+    <IntDir>$(SolutionDir)bin-int\$(ProjectName)\$(Configuration)\$(Platform)</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
